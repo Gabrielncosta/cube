@@ -459,6 +459,77 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script src="js/modernizr.min.js"></script>
 	<script src="js/main.js"></script>
 
+	
+	<script>
+function ObterParametroUrl(parametro) {
+    var parametros = window.location.search.substring(1).split("&");
+    for (var i = 0; i < parametros.length; i++) {
+        var splitParametro = parametros[i].split("=");
+        if (splitParametro[0] == parametro) {
+            return splitParametro[1];
+        }
+    }
+}
+
+
+//pego os parametros utm que vem na URL
+var source = ObterParametroUrl("utm_source");
+var medium = ObterParametroUrl("utm_medium");
+var content = ObterParametroUrl("utm_content");
+var campaign = ObterParametroUrl("utm_campaign");
+var src = ObterParametroUrl("src");
+
+var urlnova = '';
+
+if (source) urlnova = urlnova + '&utm_source=' + source;
+if (src) urlnova = urlnova + '&src=' + src;
+if (medium) urlnova = urlnova + '&utm_medium=' + medium;
+if (campaign) urlnova = urlnova + '&utm_campaign=' + campaign;
+if (content) urlnova = urlnova + '&utm_content=' + content;
+
+if (!source) source = 'Vazio';
+if (!medium) medium= 'Vazio';
+if (!campaign) campaign= 'Vazio';
+
+urlnova = urlnova  + '&src='+source+'|'+medium+'|'+campaign;
+
+var exitutm = "";
+
+jQuery(document).ready(function ($) {
+//myVar = setTimeout(MudarLink, 200);
+
+
+
+
+
+function init() {
+setTimeout(function(){window.scrollTo(0,1)},0);
+}
+if( window.location.host == "localhost:8888") {
+
+
+
+}else{
+
+  window.history.pushState('redirect.php', 'back', 'redirect.php?src='+src);
+  window.history.pushState('/lp2.php', 'Index', '/lp2.php?src='+src);
+  window.addEventListener("popstate", function(e) {
+    if(document.URL.indexOf("redirect.php") >= 0){
+    document.location.href = document.location;
+    }
+
+  });
+
+}
+
+
+  jQuery('.kits2 a').each(function () {
+    var href = $(this).attr("href");
+    $(this).attr("href", href+urlnova);
+  });
+
+});
+</script>
 
 	</body>
 </html>
