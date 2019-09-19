@@ -1,21 +1,4 @@
-<?php
-if(isset($_GET['src']))
-$src = $_GET['src'];
 
-else
-$site = "sem-src";
-
-/*
-$url_checkout_kit1 = "https://checkout.novabelle.com.br/checkout/9b3691829b2b9e8f65931d67161ff898a4eef255?src=".$src."";
-$url_checkout_kit2 = "https://checkout.novabelle.com.br/checkout/02c871008ed15a498f765683bfa4c0ab7020bc5b?src=".$src."";
-$url_checkout_kit3 = "https://checkout.novabelle.com.br/checkout/106dcf41cb3bbdf5cdae63c4ce4af3c87f1d6577?src=".$src."";
-*/
-
-$url_checkout_kit1 = "https://clkdmg.site/pay/8e3e2e8c-9bb5-40af-8d98-3aa5b67bb84c?src=".$src."";
-$url_checkout_kit2 = "https://clkdmg.site/pay/8e3e3059-3922-4493-83cc-cc69ac6d0ea5?src=".$src."";
-$url_checkout_kit3 = "https://clkdmg.site/pay/8e3e30b3-a4f5-466b-b0e1-d9d1b7970b30?src=".$src."";
-
-?>
 <!DOCTYPE html>
 <html class="no-js" lang="pt-br">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -476,77 +459,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script src="js/modernizr.min.js"></script>
 	<script src="js/main.js"></script>
 
-	
-	<script>
-function ObterParametroUrl(parametro) {
-    var parametros = window.location.search.substring(1).split("&");
-    for (var i = 0; i < parametros.length; i++) {
-        var splitParametro = parametros[i].split("=");
-        if (splitParametro[0] == parametro) {
-            return splitParametro[1];
-        }
-    }
-}
-
-
-//pego os parametros utm que vem na URL
-var source = ObterParametroUrl("utm_source");
-var medium = ObterParametroUrl("utm_medium");
-var content = ObterParametroUrl("utm_content");
-var campaign = ObterParametroUrl("utm_campaign");
-var src = ObterParametroUrl("src");
-
-var urlnova = '';
-
-if (source) urlnova = urlnova + '&utm_source=' + source;
-if (src) urlnova = urlnova + '&src=' + src;
-if (medium) urlnova = urlnova + '&utm_medium=' + medium;
-if (campaign) urlnova = urlnova + '&utm_campaign=' + campaign;
-if (content) urlnova = urlnova + '&utm_content=' + content;
-
-if (!source) source = 'Vazio';
-if (!medium) medium= 'Vazio';
-if (!campaign) campaign= 'Vazio';
-
-urlnova = urlnova  + '&src='+source+'|'+medium+'|'+campaign;
-
-var exitutm = "";
-
-jQuery(document).ready(function ($) {
-//myVar = setTimeout(MudarLink, 200);
-
-
-
-
-
-function init() {
-setTimeout(function(){window.scrollTo(0,1)},0);
-}
-if( window.location.host == "localhost:8888") {
-
-
-
-}else{
-
-  window.history.pushState('redirect.php', 'back', 'redirect.php?src='+src);
-  window.history.pushState('/lp2.php', 'Index', '/lp2.php?src='+src);
-  window.addEventListener("popstate", function(e) {
-    if(document.URL.indexOf("redirect.php") >= 0){
-    document.location.href = document.location;
-    }
-
-  });
-
-}
-
-
-  jQuery('.kits2 a').each(function () {
-    var href = $(this).attr("href");
-    $(this).attr("href", href+urlnova);
-  });
-
-});
-</script>
 
 	</body>
 </html>
